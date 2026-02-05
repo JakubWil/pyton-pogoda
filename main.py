@@ -1,8 +1,12 @@
 import requests
+from dotenv import load_dotenv
+import os 
 
 
 running = True
-key = "HZ5AV8EGJJC4S62TQL45YD2WM"
+
+load_dotenv()
+key = os.environ.get("WEATHER_APP_KEY")
 location = "London,UK"
 
 

@@ -19,5 +19,7 @@ jobs:
         pip install -r requriments.txt  # Krok 3: Robot instaluje biblioteki (np. requests)
 
     - name: Run a simple check
+      env:
+        WEATHER_APP_KEY: ${{ secrets.WEATHER_APP_KEY }}  # Przekazuje sekret do robota
       run: |
         python -m py_compile main.py  # Krok 4: Sprawdza, czy w kodzie nie ma błędów składniowych
