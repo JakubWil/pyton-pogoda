@@ -16,7 +16,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt  # Krok 3: Robot instaluje biblioteki (np. requests)
+        pip install -r requriments.txt  # Krok 3: Robot instaluje biblioteki (np. requests)
 
     - name: Run a simple check
       run: |
