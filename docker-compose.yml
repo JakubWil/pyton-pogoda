@@ -1,0 +1,11 @@
+
+
+services:
+  app:
+    build: .  # Mówi: zbuduj obraz z Dockerfile w tym folderze
+    env_file: .env  # Mówi: weź zmienne z pliku .env (automatycznie!)
+    depends_on:
+      - cache  # Mówi: najpierw odpal bazę 'cache', potem mnie
+
+  cache:
+    image: redis:alpine  # Nie potrzebujesz Dockerfile dla Redisa, bierzesz gotowca
