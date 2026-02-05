@@ -1,0 +1,23 @@
+name: Python Check  # Nazwa Twojego robota
+
+on: [push]  # Robot startuje zawsze, gdy robisz 'git push'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Robot odpala się na czystym Linuxie w chmurze
+
+    steps:
+    - uses: actions/checkout@v3  # Krok 1: Robot kopiuje Twój kod
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'    # Krok 2: Robot instaluje Pythona
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # Krok 3: Robot instaluje biblioteki (np. requests)
+
+    - name: Run a simple check
+      run: |
+        python -m py_compile main.py  # Krok 4: Sprawdza, czy w kodzie nie ma błędów składniowych
