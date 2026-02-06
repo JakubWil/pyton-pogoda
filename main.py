@@ -5,6 +5,9 @@ import redis
 import json
 import re
 
+#PDF pogoda historia 
+#Voluemn
+#Redis dashboard
 
 
 r = redis.Redis(host='cache', port=6379, decode_responses=True)
