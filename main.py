@@ -5,40 +5,52 @@ import redis
 
 
 r = redis.Redis(host='cache', port=6379, decode_responses=True)
+
+
+load_dotenv()
+
 key = os.environ.get("WEATHER_APP_KEY")
 location = os.environ.get("CITY_NAME", "Warsaw")
 
 
+
 def get_weather():
-    
-    cached_data = r.get(location)
 
-    if cached_data:
-        print(f"--- Dane pobrane z CACHE (Redis) dla: {location} ---")
+    cities = location.split(",")
+
+    for city in cities:
+    
+        cached_data = r.get(city)
+
         print(cached_data)
-        return
-    
-    print(f"--- Brak danych w Cache. Pytam API dla: {location} ---")
 
-    url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?key={key}'
+        if cached_data:
+            print(f"--- Dane pobrane z CACHE (Redis) dla: {city} ---")
+            print(cached_data)
+            
+        else:
+            print(f"--- Brak danych w Cache. Pytam API dla: {city} ---")
 
-    try:
-        x = requests.get(url)
+            url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?key={key}'
 
-        if x.status_code == 200:
-            data = x.json()
+            try:
+                x = requests.get(url)
 
-            temp = data['currentConditions']['temp']
-            description = data['description']
-            address = data['resolvedAddress']
+                if x.status_code == 200:
+                    data = x.json()
 
-            r.set(f"{location}", temp)
+                    temp = data['currentConditions']['temp']
+                    description = data['description']
+                    address = data['resolvedAddress']
 
-            print(f"Miasto: {address}")
-            print(f"Temperatura: {temp}°C")
-            print(f"Opis: {description}")
-    except Exception as e:
-        print(f"Wystąpił błąd połączenia: {e}") 
+                    r.set(f"{city}", temp)
+
+                    print(f"Miasto: {address}")
+                    print(f"Temperatura: {temp}°C")
+                    print(f"Opis: {description}")
+                    print("---------------")
+            except Exception as e:
+                print(f"Wystąpił błąd połączenia: {e}") 
 
 
     
