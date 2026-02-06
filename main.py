@@ -4,13 +4,9 @@ import os
 import redis
 
 
-running = True
-
-load_dotenv()
 r = redis.Redis(host='cache', port=6379, decode_responses=True)
 key = os.environ.get("WEATHER_APP_KEY")
 location = os.environ.get("CITY_NAME", "Warsaw")
-
 
 
 def get_weather():
