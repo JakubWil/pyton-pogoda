@@ -17,6 +17,10 @@ import re
 
 #4. Potrzebuje nauki pracy z git, bo dalej widze ze mam braki, potrzebuje zebys mi opisal taki projektowy workflow jak to wyglada. Tez potrzebuje zebys mi powiedzial co dokladnie robi git clone, kolejna rzecz odnosnie autoryzacji ja tylko raz sie autoryzuje i to robie do github tak a potem jak chce zrobic push to po prostu musze zapisac w remote dane tego repo, ale jak np nie wiem teraz bede miec jedno repo na moim kompie ale np ktos zaprosi mnie do projektu to jak bedzie autoryzacja to nie do tego repo tylko do github zeby zweryfikowal ze to ja. No i to co jeszcze tak nie ogarniam to powiedzmy ze mam kilka kont na github to jak zrobic tak ze jak pracuje nad projektem A to tam mam wysylac z konta A , projekt B z konta B ? 
 
+#5. Jaka jest zasada 1:1 Projekt:Repo Bo co jeśli np mam główny projekt i tam mam foldery gdzie mam projekty takie krótkie. I git init jest zrobiony tylko w tym głównym pliku to jeśli zrobie zmiane w child folder to główny to widzi i bedzie ze modified folder-1 czy pokaze dokladny plik jaki modified w tym folder-1/main.py
+
+#6. Czy jak mam folder gdzie zrobiłem git init i tam ma pliki ale postanowie sobie zrobic nowy folder i przenies tam kilka plikow, czy jak teraz bede robic zmiany w tym nowym folder to dalej moge wysylac zmiany do github ?
+
 
 r = redis.Redis(host='cache', port=6379, decode_responses=True)
 
